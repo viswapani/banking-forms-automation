@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>GenAI Banking Forms - Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+    <header>
+        <h1>GenAI Banking Forms Automation</h1>
+        <h2>Upload Banking Form</h2>
+    </header>
+
+    <main>
+        <section id="upload-section">
+            <form id="upload-form">
+                <label for="file-input">Select a scanned banking form (PDF / JPG / PNG):</label>
+                <input type="file" id="file-input" name="file" accept=".pdf,image/*" required />
+                <button type="submit">Upload &amp; Process</button>
+            </form>
+            <div id="upload-status" class="status"></div>
+        </section>
+
+        <section id="result-section" style="display:none;">
+            <h3>Submission Result</h3>
+            <p><strong>Acknowledgment ID:</strong> <span id="ack-id"></span></p>
+            <p><strong>Form Type:</strong> <span id="form-type"></span></p>
+            <p><strong>Status:</strong> <span id="form-status"></span></p>
+            <p><strong>Missing Fields:</strong> <span id="missing-fields"></span></p>
+        </section>
+    </main>
+
+    <script src="/static/js/upload.js"></script>
+</body>
+</html>
