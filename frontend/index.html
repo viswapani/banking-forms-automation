@@ -2,34 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>GenAI Banking Forms - Upload</title>
+    <title>GenAI Banking Forms - Service Request</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
-    <header>
-        <h1>GenAI Banking Forms Automation</h1>
-        <h2>Upload Banking Form</h2>
+    <!-- Top navigation style header -->
+    <header class="top-header">
+        <div class="brand-strip">
+            <div class="brand-logo">GenAI Bank</div>
+            <nav class="top-nav">
+                <a href="#" class="nav-link active">Service Requests</a>
+                <a href="#" class="nav-link">Accounts</a>
+                <a href="#" class="nav-link">Cards</a>
+            </nav>
+        </div>
+        <div class="page-title-bar">
+            <div class="page-title-main">Service Request</div>
+            <div class="page-title-sub">Upload &amp; track your banking forms</div>
+        </div>
     </header>
 
-    <main>
-        <section id="upload-section">
-            <form id="upload-form">
-                <label for="file-input">Select a scanned banking form (PDF / JPG / PNG):</label>
-                <input type="file" id="file-input" name="file" accept=".pdf,image/*" required />
-                <button type="submit">Upload &amp; Process</button>
-            </form>
-            <div id="upload-status" class="status"></div>
+    <main class="page-layout">
+        <!-- Left column: request type & upload form -->
+        <section class="left-column">
+            <div class="card-section">
+                <h2 class="section-heading">Select Request Type</h2>
+                <div class="pill-tabs">
+                    <button class="pill-tab pill-tab-active" type="button">Form Upload</button>
+                    <button class="pill-tab" type="button">Track Request</button>
+                </div>
+                <p class="section-helper">Choose a request type and upload the relevant banking form.</p>
+            </div>
+
+            <div class="card-section">
+                <h2 class="section-heading">Upload Banking Form</h2>
+                <form id="upload-form" class="upload-form">
+                    <div class="form-row">
+                        <label for="file-input" class="field-label">Upload scanned form</label>
+                        <div class="field-control">
+                            <input type="file" id="file-input" name="file" accept=".pdf,image/*" required />
+                            <small class="field-hint">Accepted formats: PDF, JPG, PNG | Max size 10 MB</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row inline-row">
+                        <div class="field-group">
+                            <label for="customer-id" class="field-label">Customer ID (optional)</label>
+                            <input type="text" id="customer-id" name="customer_id" class="text-input" placeholder="Enter Customer ID" />
+                        </div>
+                        <div class="field-group">
+                            <label for="branch" class="field-label">Branch (optional)</label>
+                            <input type="text" id="branch" name="branch" class="text-input" placeholder="Enter Branch" />
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="primary-btn">Submit Request</button>
+                        <button type="reset" class="secondary-btn">Clear</button>
+                    </div>
+
+                    <div id="upload-status" class="status"></div>
+                </form>
+            </div>
         </section>
 
-        <section id="result-section" style="display:none;">
-            <h3>Submission Result</h3>
-            <p><strong>Acknowledgment ID:</strong> <span id="ack-id"></span></p>
-            <p><strong>Form Type:</strong> <span id="form-type"></span></p>
-            <p><strong>Status:</strong> <span id="form-status"></span></p>
-            <p><strong>Missing Fields:</strong> <span id="missing-fields"></span></p>
-        </section>
+        <!-- Right column: request summary / result -->
+        <aside class="right-column">
+            <div class="card-section" id="result-section" style="display:none;">
+                <h2 class="section-heading">Request Summary</h2>
+                <div class="summary-item">
+                    <span class="summary-label">Acknowledgment ID</span>
+                    <span class="summary-value" id="ack-id">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Form Type</span>
+                    <span class="summary-value" id="form-type">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Status</span>
+                    <span class="summary-value status-pill" id="form-status">-</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Missing Fields</span>
+                    <span class="summary-value" id="missing-fields">None</span>
+                </div>
+            </div>
+
+            <div class="card-section info-card">
+                <h3 class="info-title">Important information</h3>
+                <ul class="info-list">
+                    <li>Ensure the form is clearly scanned and all fields are visible.</li>
+                    <li>Only authorized account holders should submit service requests.</li>
+                    <li>Keep the acknowledgment ID handy for future tracking.</li>
+                </ul>
+            </div>
+        </aside>
     </main>
+
+    <footer class="page-footer">
+        <span>© 2025 GenAI Bank. All rights reserved.</span>
+    </footer>
 
     <script src="/static/js/upload.js"></script>
 </body>
